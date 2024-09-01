@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calculator">
+        <div class="input-container">
+            <input type="text" id="num1"  oninput="validateNumber(this)">
+            <select id="operator1">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="×">×</option>
+                <option value="÷">÷</option>
+            </select>
+            <input type="text" id="num2"  oninput="validateNumber(this)">
+            <select id="operator2" >
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="×">×</option>
+                <option value="÷">÷</option>
+            </select>
+            <input type="text" id="num3"  oninput="validateNumber(this)">
+            <button id="equals">=</button>
+            <div id="result" class="result"></div>
+            
+        </div>
+        <div class="reset-container">
+            <button id="reset">RESET</button>
+        </div>
+    </div>
+    <script src="calScript.js"></script>
+</body>
+</html>
+
+

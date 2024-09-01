@@ -1,0 +1,115 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.calculator {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.input-container input,
+.input-container select,
+.input-container button,
+.result {
+    margin: 5px;
+    padding: 10px;
+    font-size: 16px;
+    height: 40px; 
+    box-sizing: border-box; 
+    border: 2px solid #1b1a1a;
+}
+
+.input-container input {
+    width: 80px;
+}
+
+.input-container button {
+    cursor: pointer;
+}
+
+.result-container {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+    padding: 10px;
+    width: 80px;
+    font-size: 16px;
+}
+
+
+.result {
+    width: 85px; 
+    font-size: 16px;
+    background-color: #f2f2f2;
+    text-align: center; 
+    line-height: 20px; 
+    
+}
+#equals{
+    width: 65px; 
+    height: 40px; 
+    font-size: 16px;
+    padding: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: #005580; 
+    color: #fff; 
+    border: none; 
+    border-radius: 5px; 
+    box-shadow: 3px 3px 5px rgba(9, 9, 9, 0.3); 
+}
+.reset-container {
+    
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+#equals:hover, #reset:hover {
+    background-color: #003d66; 
+}
+#reset {
+    width: 80px; 
+    height: 40px; 
+    font-size: 12px;
+    padding: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: #005580; 
+    color: #fff; 
+    border: none; 
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px rgba(9, 9, 9, 0.3);
+}
+.input-container select::before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    bottom: 3px;
+    right: 25px; 
+    width: 1px;
+    background-color: #1b1a1a; 
+    height: calc(100% - 6px); 
+}
+
+.input-container select:focus {
+    outline: none;
+    
+}
+
+
+
