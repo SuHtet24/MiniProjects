@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="TodoStyle.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Todoリスト</h1>
+        <form id="taskForm">
+            <input type="date" id="date" required>
+            <input type="text" id="description" placeholder="タスク内容" required>
+            <button type="submit">追加</button>
+        </form>
+
+        <h2>未完了タスク</h2>
+        <ul id="incompleteTasks"></ul>
+
+        <h2>完了済タスク</h2>
+        <ul id="completeTasks"></ul>
+    </div>
+
+    <script>
+        let tasks = [];
+
+        document.getElementById('taskForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const date = document.getElementById('date').value;
+            const description = document.getElementById('description').value;
+
+            if (date && description) {
+                tasks.push({ date, description, completed: false });
+                renderTasks();
+                this.reset();
+            }
+        });
+
+        function renderTasks() {
+            const incompleteTasks = document.getElementById('incompleteTasks');
+            const completeTasks = document.getElementById('completeTasks');
+            incompleteTasks.innerHTML = completeTasks.innerHTML = '';
+
+            tasks.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+            tasks.forEach((task, index) => {
+                const li = document.createElement('li');
+                const taskText = document.createElement('span');
+                taskText.textContent = `${task.date}: ${task.description}`;
+                li.appendChild(taskText);
+
+                const actionButtons = document.createElement('div');
+                actionButtons.className = 'action-buttons';
+
+                if (task.completed) {
+                    li.className = 'complete';
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.textContent = '削除';
+                    deleteBtn.className = 'delete-btn';
+                    deleteBtn.onclick = () => { tasks.splice(index, 1); renderTasks(); };
+                    actionButtons.appendChild(deleteBtn);
+                    li.appendChild(actionButtons);
+                    completeTasks.appendChild(li);
+                } else {
+                    const completeBtn = document.createElement('button');
+                    completeBtn.textContent = '完了';
+                    completeBtn.className = 'complete-btn';
+                    completeBtn.onclick = () => { task.completed = true; renderTasks(); };
+                    actionButtons.appendChild(completeBtn);
+                    li.appendChild(actionButtons);
+                    incompleteTasks.appendChild(li);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
